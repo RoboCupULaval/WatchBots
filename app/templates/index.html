@@ -1,6 +1,39 @@
 {% extends "layout.html" %}
-{% block title %}Hello world!{% endblock %}
+
+{% block title %}WatchBots{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/common.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}
+
 {% block body %}
-    {{ super() }}
-    <h2>This heading is defined in the child.</h2>
+{% raw %}
+    <header class="flex-container">
+        <span class="flex-item logo"><img height="50px" src="img/logo_white.png" /></span>
+        <span class="flex-item title">WatchBots</span>
+        <span class="flex-item search">
+            <input type="search" placeholder="Search" ng-model="search" />
+        </span>
+    </header>
+
+    <div class="flex-container" ng-controller="RobotsOverview as robots">
+        <div class="flex-item-equal box" ng-repeat="robot in robots.list | filter: search">
+            <h1>Robot {{robot.id}}
+                <img height="15px" ng-src="{{robots.getBattUrl(robot)}}" />
+                <img height="15px" ng-src="{{robots.getComUrl(robot)}}" /></h1>
+            Power Supply
+            <ul>
+                <li>Batt. percentage : {{robot.supply.batt}} %</li>
+                <li>Batt. voltage : {{robot.supply.voltage}} V</li>
+                <li>Total current : {{robot.supply.current}} A</li>
+                <li>Power used : {{robot.supply.power}} W</li>
+            </ul>
+            Communication
+            <ul>
+                <li>Time since last packet : {{robot.com.time_since_last_packet}} s</li>
+            </ul>
+        </div>
+    </div>
+{% endraw %}
 {% endblock %}

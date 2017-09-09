@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>{% block title %}{% endblock %}</title>
-    </head>
-    <body>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="utf-8" />
+	<title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="apple-mobile-web-app-title" content="At Home" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" /> <!-- Chrome on Android -->
+    <script src="https://code.angularjs.org/1.5.5/angular.min.js"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+    {% block script %}{% endblock %}
+</head>
+
+<body>
     {% block body %}
-        <h1>This heading is defined in the parent.</h1>
     {% endblock %}
-    </body>
+
+<div align="center">© 2017 Robocup ULaval</div>
+</body>
 </html>

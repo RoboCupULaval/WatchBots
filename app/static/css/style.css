@@ -1,0 +1,342 @@
+html {
+    font-family: Helvetica Neue;
+    font-weight: 200;
+    background-color: #dddddd;
+    padding: 0;
+    margin: 0;
+}
+body {
+    width: 100%;
+    padding: 0;
+    padding-top: 67px;
+    margin: 0;
+}
+
+h1, h2 {
+    font-weight: 400;
+}
+
+.bold {
+    font-weight: 400;
+}
+
+.no-border {
+    border: 0;
+}
+
+/* Colors */
+.blue, .active, .debug {
+    color: #387ef4;
+}
+.red, .error {
+    color: #da0a25;
+}
+.green, .info {
+    color: #33d15f;
+}
+.orange, .warn{
+    color: #e3792c;
+}
+.grey {
+    color: #c1c1c1;
+}
+
+.center {
+    text-align: center;
+}
+
+.w25 {
+    width: 25%;
+}
+
+.w50 {
+    width: 50%;
+}
+
+.w75 {
+    width: 75%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.maxH300 {
+    max-height: 300px;
+}
+
+input {
+    background-color: transparent;
+    font-size: 0.8em;
+    border: 0;
+    border-bottom: 1px solid #c1c1c1;
+    outline: none;
+    padding: 2px 5px 2px 5px;
+}
+
+input.number {
+    width: 50px;
+}
+
+.button, button {
+    font-size: 0.8em;
+    color: #387ef4;
+    font-weight: 200;
+    border: 1px solid #387ef4;
+    background-color: transparent;
+    margin: 2px;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+}
+
+.button.green, button.green {
+    border-color: #33d15f;
+    color: #33d15f;
+}
+
+.button.red, button.red {
+    border-color: #da0a25;
+    color: #da0a25;
+}
+
+.button.orange, button.orange {
+    border-color: #e3792c;
+    color: #e3792c;
+}
+
+.button.grey, button.grey {
+    border-color: #c1c1c1;
+    color: #c1c1c1;
+}
+
+.button:hover, button:hover, .button.active, button.active {
+    color: white;
+    background-color: #387ef4;
+    border-color: #387ef4;
+}
+
+.button.green:hover, button.green:hover,
+.button.green.active, button.green.active {
+    color: white;
+    background-color: #33d15f;
+    border-color: #33d15f;
+}
+
+.button.red:hover, button.red:hover,
+.button.red.active, button.red.active {
+    color: white;
+    background-color: #da0a25;
+    border-color: #da0a25;
+}
+
+.button.orange:hover, button.orange:hover,
+.button.orange.active, button.orange.active {
+    color: white;
+    background-color: #e3792c;
+    border-color: #e3792c;
+}
+
+.button.grey:hover, button.grey:hover,
+.button.grey.active, button.grey.active {
+    color: white;
+    background-color: #c1c1c1;
+    border-color: #c1c1c1;
+}
+
+
+header {
+    z-index: 999;
+    background-color: #387ef4;
+    font-size: 1.2em;
+    color: white;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 55px;
+    width: auto;
+    align-items: center;
+    -webkit-align-items: center;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.title {
+    margin-left: 10px;
+}
+
+.time {
+    text-align: right;
+    margin-right: 50px;
+}
+
+.logo {
+    max-width: 50px;
+}
+
+.search {
+    text-align: right;
+    width: 15%;
+    min-width: 150px;
+    max-width: 300px;
+    padding-right: 20px;
+}
+
+.search input {
+    font-size: 0.8em;
+    font-weight: 200;
+    color: white;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid white;
+    outline: none;
+    width: 100%;
+    height: 30px;
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    font-weight: 200;
+    color:    white;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    font-weight: 200;
+    color:    white;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    font-weight: 200;
+    color:    white;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-weight: 200;
+    color:    white;
+}
+
+.scrollable {
+    overflow-x: inherit;
+    overflow-y: scroll;
+}
+
+.box {
+    background-color: white;
+    box-shadow: 2px 2px 7px #c1c1c1;
+    padding: 20px;
+    margin : 10px;
+    min-width: 200px;
+    border-radius: 3px;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.box.ng-hide {
+    -webkit-animation: fadeOut 0.25s;
+    animation: fadeOut 0.25s;
+}
+.box.ng-enter {
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
+}
+.box.ng-leave {
+    -webkit-animation: fadeOut 0.25s;
+    animation: fadeOut 0.25s;
+}
+
+.box h1 {
+    position: relative;
+    /*background-color: rgba(56,126,244,0.5);*/
+    top: 5px; left: 5px; right: 0;
+    font-size: 1.2em;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+    width: auto;
+}
+
+.box h1 .option {
+    visibility: hidden;
+}
+.box h1 .option i {
+    color: grey;
+    font-size: 0.6em;
+}
+.box h1:hover > .option {
+    visibility: visible;
+}
+
+.box .box {
+    box-shadow: 0 0 0;
+    border: 1px solid #c1c1c1;
+}
+.box .box h1 {
+    background-color: transparent;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+/* Flex design */
+.flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.flex-rowwrap {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+.flex-column {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.flex-item-equal {
+    flex: 1 1 25%;
+    -webkit-flex:1 1 25%;
+}
+
+.flex-item {
+    flex: 1 1 auto;
+    -webkit-flex:1 1 auto;
+}
+
+.flex-item2 {
+    flex: 2 2 auto;
+    -webkit-flex:2 2 auto;
+}
+
+.flex-item3 {
+    flex: 3 3 auto;
+    -webkit-flex:3 3 auto;
+}
+
+.flex-item4 {
+    flex: 4 4 auto;
+    -webkit-flex:4 4 auto;
+}
+.flex-item5 {
+    flex: 5 5 auto;
+    -webkit-flex:5 5 auto;
+}
+.spacer10 {
+    flex: 10 10 auto;
+    -webkit-flex:10 10 auto;
+}
+
+span.chart {
+    max-height: 300px;
+    min-height: 300px;
+    max-width: 400px;
+    min-width: 400px;
+    padding: auto;
+    margin: auto;
+}
