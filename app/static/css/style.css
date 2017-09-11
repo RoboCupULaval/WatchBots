@@ -294,7 +294,7 @@ input:focus, select:focus, button:focus {
     color: #387ef4;
 }
 
-.icon-button-selected, .icon-button:hover {
+.icon-button.selected, .icon-button:hover {
     background-color: #387ef4;
     color: white;
 }
@@ -388,6 +388,20 @@ table.list tr:first-child {
 
 table.list th {
     font-weight: 200;
+    color: grey;
+    cursor: default;
+}
+
+table.list th:first-child {
+    text-align: left;
+}
+
+table.list th.selected {
+    color: black;
+}
+
+table.list th:hover {
+    color: #387ef4;
 }
 
 table.list td {
