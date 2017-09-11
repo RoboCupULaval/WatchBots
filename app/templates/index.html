@@ -17,23 +17,55 @@
         </span>
     </header>
 
-    <div class="flex-container" ng-controller="RobotsOverview as robots">
-        <div class="flex-item-equal box" ng-repeat="robot in robots.list | filter: search">
-            <h1>Robot {{robot.id}}
-                <img height="15px" ng-src="{{robots.getBattUrl(robot)}}" />
-                <img height="15px" ng-src="{{robots.getComUrl(robot)}}" /></h1>
-            Power Supply
-            <ul>
-                <li>Batt. percentage : {{robot.supply.batt}} %</li>
-                <li>Batt. voltage : {{robot.supply.voltage}} V</li>
-                <li>Total current : {{robot.supply.current}} A</li>
-                <li>Power used : {{robot.supply.power}} W</li>
-            </ul>
-            Communication
-            <ul>
-                <li>Time since last packet : {{robot.com.time_since_last_packet}} s</li>
-            </ul>
+    <div ng-controller="RobotsOverview as overview">
+
+        <div class="icon-button-container">
+            <i class="icon-button el el-th" ng-class="{'icon-button-selected': overview.view_mode === 'grid'}"
+               ng-click="overview.changeViewModeToGrid()"></i>
+            <i class="icon-button el el-list" ng-class="{'icon-button-selected': overview.view_mode === 'list'}"
+               ng-click="overview.changeViewModeToList()"></i>
         </div>
+
+        <div class="flex-container" ng-if="overview.view_mode === 'grid'">
+            <div class="flex-item-equal box" ng-repeat="robot in overview.robots_list | filter: search">
+                <h1>{{robot.name}}
+                    <img height="15px" ng-src="{{overview.getBattUrl(robot)}}" />
+                    <img height="15px" ng-src="{{overview.getComUrl(robot)}}" /></h1>
+                Power Supply
+                <ul>
+                    <li>Batt. percentage : {{robot.supply.batt}} %</li>
+                    <li>Batt. voltage : {{robot.supply.voltage}} V</li>
+                    <li>Total current : {{robot.supply.current}} A</li>
+                    <li>Power used : {{robot.supply.power}} W</li>
+                </ul>
+                Communication
+                <ul>
+                    <li>Time since last packet : {{robot.com.time_since_last_packet}} s</li>
+                </ul>
+            </div>
+        </div>
+
+        <table class="list" ng-if="overview.view_mode === 'list'">
+            <tr class="">
+                <th></th>
+                <th>Batt. percentage</th>
+                <th>Batt. voltage</th>
+                <th>Total current</th>
+                <th>Power used</th>
+                <th>Time since last packet</th>
+            </tr>
+            <tr class="" ng-repeat="robot in overview.robots_list | filter: search">
+                <td>{{robot.name}}
+                    <img height="15px" ng-src="{{overview.getBattUrl(robot)}}" />
+                    <img height="15px" ng-src="{{overview.getComUrl(robot)}}" /></td>
+                <td>{{robot.supply.batt}} %</td>
+                <td>{{robot.supply.voltage}} V</td>
+                <td>{{robot.supply.current}} A</td>
+                <td>{{robot.supply.power}} W</td>
+                <td>{{robot.com.time_since_last_packet}} s</td>
+            </tr>
+        </table>
     </div>
+
 {% endraw %}
 {% endblock %}

@@ -275,6 +275,31 @@ input:focus, select:focus, button:focus {
     border-bottom: 1px solid #c1c1c1;
 }
 
+
+.icon-button-container {
+    text-align: right;
+    padding-top: 10px;
+    padding-right: 5%
+}
+
+.icon-button {
+    background-color: white;
+    box-shadow: 2px 2px 7px #c1c1c1;
+    border-radius: 3px;
+    align-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 10px;
+    font-weight: 100;
+    color: #387ef4;
+}
+
+.icon-button-selected, .icon-button:hover {
+    background-color: #387ef4;
+    color: white;
+}
+
+
 /* Flex design */
 .flex-container {
     display: -webkit-box;
@@ -339,4 +364,57 @@ span.chart {
     min-width: 400px;
     padding: auto;
     margin: auto;
+}
+
+/* Table */
+table.list {
+    padding: 0;
+    margin: -20px 0 2% 2%;
+    width: 96%;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border-spacing: 0 15px;
+}
+
+table.list tr {
+    box-shadow: 2px 2px 7px #c1c1c1;
+    -webkit-animation: fadeIn 0.5s;
+    animation: fadeIn 0.5s;
+}
+
+table.list tr:first-child {
+    box-shadow: none;
+}
+
+table.list th {
+    font-weight: 200;
+}
+
+table.list td {
+    text-align: center;
+    background: white;
+}
+
+table.list td:first-child {
+    text-align: left;
+    padding-left: 20px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+table.list td:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+table.list th, table.list td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+table.list td img {
+    padding-left: 5px;
+}
+table.list td img:first-child {
+    padding-left: 10px;
 }

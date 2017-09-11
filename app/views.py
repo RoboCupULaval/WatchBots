@@ -10,3 +10,7 @@ def index():
 @app.route('/img/<path:path>')
 def send_img(path):
     return send_from_directory('static/img', path)
+
+@app.route('/fonts/<path:path>')
+def send_fonts(path):
+    return send_from_directory('static/fonts', path)
