@@ -1,5 +1,5 @@
 html {
-    font-family: Helvetica Neue;
+    font-family: Helvetica Neue, sans-serif;
     font-weight: 200;
     background-color: #dddddd;
     padding: 0;
@@ -414,6 +414,7 @@ table.list td:first-child {
     padding-left: 20px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
+    border-right: 1px solid #c1c1c1;
 }
 
 table.list td:last-child {
