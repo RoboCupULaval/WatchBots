@@ -1,11 +1,17 @@
 #!flask/bin/python
 from app import app, sio
-import socketio
-import eventlet.wsgi
 import webbrowser
+import eventlet
+
+from robots_receiver import RobotsReceiver
+
+eventlet.monkey_patch()
 
 if __name__ == '__main__':
+    robots_recv = RobotsReceiver()
+    robots_recv.start()
+
     if not app.config['DEBUG']:
         webbrowser.open('http://localhost:5000')
-    app = socketio.Middleware(sio, app)
-    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
+
+    sio.run(app)

@@ -36,7 +36,7 @@
                     {{category.display_name}}
                     <ul>
                         <li ng-repeat="param in overview.params_list" ng-if="param.category === category.name">
-                            {{param.display_name}} : {{robot[category.name][param.name]}}
+                            {{param.display_name}} : {{robot[category.name][param.name] | number: 2}} {{param.unit}}
                         </li>
                     </ul>
                 </div>
@@ -55,10 +55,13 @@
                 </th>
             </tr>
             <tr class="" ng-repeat="robot in overview.robots_list | filter: search | orderBy: overview.order_by">
-                <td ng-repeat="param in overview.params_list">
-                    {{robot[param.category][param.name]}} {{param.unit}}
-                    <img ng-if="param.name === 'name'" height="15px" ng-src="{{overview.getBattUrl(robot)}}" />
-                    <img ng-if="param.name === 'name'" height="15px" ng-src="{{overview.getComUrl(robot)}}" />
+                <td>
+                    {{robot.info.name}}
+                    <img height="15px" ng-src="{{overview.getBattUrl(robot)}}" />
+                    <img height="15px" ng-src="{{overview.getComUrl(robot)}}" />
+                </td>
+                <td ng-repeat="param in overview.params_list" ng-if="param.name != 'name'">
+                    {{robot[param.category][param.name] | number: 2}} {{param.unit}}
                 </td>
             </tr>
         </table>
