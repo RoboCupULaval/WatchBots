@@ -1,6 +1,6 @@
 ## The following requirements were added by pip freeze:
 Flask==0.12.2
 Flask-SocketIO==2.9.2
-eventlet==0.21.0
+gevent==1.2.2
 tinydb==3.5.0
 tinyrecord==0.1.3

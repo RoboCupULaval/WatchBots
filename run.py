@@ -1,17 +1,19 @@
 #!flask/bin/python
+from gevent import monkey
+monkey.patch_all()
+
 from app import app, sio
 import webbrowser
-import eventlet
 
 from robots_receiver import RobotsReceiver
 
-eventlet.monkey_patch()
-
-if __name__ == '__main__':
+@app.before_first_request
+def start_robots_receiver():
     robots_recv = RobotsReceiver()
     robots_recv.start()
 
+if __name__ == '__main__':
     if not app.config['DEBUG']:
-        webbrowser.open('http://localhost:5000')
+        webbrowser.open(f"http://localhost:{app.config['PORT']}")
 
-    sio.run(app)
+    sio.run(app, port=app.config['PORT'])

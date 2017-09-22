@@ -16,12 +16,19 @@ class RobotsReceiver:
 
     def _receive_packet(self):
         while True:
-            id = random.randrange(0, 6)
-            updated_robot = {"info": {"id": id, "name": f"Robot {id}"},
-                             "supply": {"batt": random.random() * 100, "voltage": random.random() * 16, "current": random.random() * 5, "power": random.random()},
-                             "com": {"time_since_last_packet": 2}}
-            sio.emit('robots_update', updated_robot)
-            with transaction(db.table('robots')) as robots:
-                robots.update(updated_robot, where('info').name == updated_robot['info']['name'])
+            robots_list = db.table('robots').all()
+            for id in range(6):
+                updated_robot = {"info": {"id": id, "name": f"Robot {id}"},
+                                 "supply": {"batt": random.random() * 100, "voltage": random.random() * 16, "current": random.random() * 5, "power": random.random()},
+                                 "com": {"time_since_last_packet": 2}}
 
-            time.sleep(1)
+                if any(robot['info']['name'] == updated_robot['info']['name'] for robot in robots_list):
+                    sio.emit('robots_update', updated_robot)
+                    with transaction(db.table('robots')) as robots:
+                        robots.update(updated_robot, where('info').name == updated_robot['info']['name'])
+                else:
+                    sio.emit('robots_insert', updated_robot)
+                    with transaction(db.table('robots')) as robots:
+                        robots.insert(updated_robot)
+
+                time.sleep(1)

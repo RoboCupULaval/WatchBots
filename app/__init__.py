@@ -3,7 +3,7 @@ from flask_socketio import SocketIO
 from tinydb import TinyDB
 
 app = Flask(__name__)
-sio = SocketIO(app)
+sio = SocketIO(app, async_mode='gevent')
 db = TinyDB('db.json', default_table='robots')
 
 app.config.from_object('config.default')

@@ -46,7 +46,8 @@ function RobotsOverview (socket, $http) {
     socket.on('robots_update', function (robot_data) {
         that.robots_list.forEach(function (robot) {
             if (robot.info.name === robot_data.info.name) {
-                robot = robot_data;
+                robot.com = robot_data.com;
+                robot.supply = robot_data.supply
             }
         });
     });
