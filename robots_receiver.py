@@ -18,7 +18,7 @@ class RobotsReceiver:
         while True:
             robots_list = db.table('robots').all()
             for id in range(6):
-                updated_robot = {"info": {"id": id, "name": f"Robot {id}"},
+                updated_robot = {"info": {"id": id, "name": "Robot {}".format(id)},
                                  "supply": {"batt": random.random() * 100, "voltage": random.random() * 16, "current": random.random() * 5, "power": random.random()},
                                  "com": {"time_since_last_packet": 2}}
 
