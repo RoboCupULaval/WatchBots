@@ -14,6 +14,6 @@ def start_robots_receiver():
 
 if __name__ == '__main__':
     if not app.config['DEBUG']:
-        webbrowser.open(f"http://localhost:{app.config['PORT']}")
+        webbrowser.open("http://localhost:{}".format(app.config['PORT']))
 
     sio.run(app, port=app.config['PORT'])
